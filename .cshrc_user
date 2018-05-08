@@ -8,7 +8,7 @@ else
 endif
 
 setenv PATH "${PATH}:/usr/local/sbin:/usr/sbin:/sbin:/usr/lib:/etc"
-setenv PATH "${PATH}:/home/yp_home/ycluo/mybin:/home/project/phison/library/bin:/opt/libreoffice4.1/program"
+setenv PATH "${PATH}:/home/yp_home/ycluo/mybin:/opt/libreoffice4.1/program"
 setenv PATH "/home/yp_home/ycluo/bin:${PATH}"
 
 #=======================================
@@ -121,11 +121,6 @@ alias ev 'emacs -batch -l ~/myenv/elisp/verilog-mode.el \!:1 -f verilog-batch-au
 #===  vtags  ===#
 alias vtags.pl  '~/mybin/vtags.pl'
 #alias meld.pl   '/home/yp_home/ycluo/mybin/meld.pl'
-
-
-#===  Richard Only  ===#
-alias lic_nc     '/home/project/phison/library/bin/chk_feature Incisive_Enterprise_Simulator'
-alias lic_verdi  '/home/project/phison/library/bin/chk_feature Verdi'
 
 #=== Xplorer ===#
 alias xplorer '/home/tools/Xtensa/Xplorer-4.0.5/xplorer'
