@@ -1,0 +1,147 @@
+#=======================================
+#  PATH
+#=======================================
+if ($?PATH) then
+        setenv PATH "${PATH}:.:/usr/X11R6/bin"
+else
+        setenv PATH ".:/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin"
+endif
+
+setenv PATH "${PATH}:/usr/local/sbin:/usr/sbin:/sbin:/usr/lib:/etc"
+setenv PATH "${PATH}:/home/yp_home/ycluo/mybin:/home/project/phison/library/bin:/opt/libreoffice4.1/program"
+setenv PATH "/home/yp_home/ycluo/bin:${PATH}"
+
+#=======================================
+#  Setting
+#=======================================
+limit coredumpsize 5m
+
+
+if ( -f $HOME/.inputrc ) then
+        setenv INPUTRC /etc/inputrc
+endif
+
+if ( $?tcsh ) then
+        bindkey "^[[3~" delete-char
+endif
+
+setenv HOSTNAME         `/bin/hostname`
+setenv OSTYPE_RAW       `/bin/uname -s`
+setenv OSTYPE           $OSTYPE_RAW
+setenv ENSCRIPT         "-fTimes-Roman12"       #set default font and header
+setenv EDITOR           vi
+
+#umask 027              #file default 666, dir default 777, un-mask write permission
+umask 022               #file default 666, dir default 777, un-mask write permission
+set history=200
+set nobeep
+set filec
+set autolist
+set notify              #cause the shell to notify you asynchronously when the status of the current or a specific job changes
+set correct=cmd
+set matchbeep=nomatch
+unset autologout
+
+#=======================================
+#  Alias
+#=======================================
+alias stop              "source ~/mybin/set_top.sr"
+#alias stool             "source ~/mybin/set_tools.sr"
+
+alias rm                'rm -i'
+alias cp                'cp -i'
+alias mv                'mv -i'
+alias la                'ls -lart'
+alias ll                'ls -la'
+#alias dir              'la |more'
+alias dir               'ls -al'
+alias cls               'clear'
+alias md                'mkdir'
+alias ld                'la |grep ^d'
+alias h                 'history \!* | more'
+alias m                 'more'
+#alias cd               'chdir \!*; set prompt="`hostname`:`echo $cwd`>"'
+alias cd                'chdir \!*; set prompt="`hostname`:`echo $cwd:t`>"'
+alias cd1               'chdir \!*; set prompt="`hostname`:`echo $cwd`>"'
+
+alias ff                'find . -name \!* -print'
+alias t                 'taile -f'
+#alias vi               'vim'
+alias print             'lpr -HPlj1200_RD \!*'
+alias prt               'enscript -2rG -M A4 -DDuplex:true -P HPlj1200_RD -f Courier6'
+
+alias split_tsb         'split -b 100000k'
+
+#=== VIM ===#
+#alias vi                '/home/yp_home/ryan_hsieh/bin/GVIM73/vim'
+#alias vi                '/home/yp_home/ycluo/bin/vim74/vim'
+alias myvi               "source ~/.cshrc_vi"
+
+
+#===  Lic  ===#
+alias chk_nc_lic         'pslic lmstat -a -c -f Incisive_Enterprise_Simulator > nc_usage.log'
+
+
+
+#===  NC  ===#
+alias opennc            'source /home/tools/env/.cshrc_NC10.2_017h'
+
+
+#===  CVS  ===#
+alias scvs              "source ~/mybin/set_cvs.sr"
+setenv CVSROOT          ~/REPOSITORY
+alias cvsup             'source ~/mybin/cvs_up.cmd'
+alias curroot           "echo $CVSROOT"
+
+#===  SVN  ===#
+alias smartsvn          '/home/tools/smartsvn_6_6_13/bin/smartsvn.sh&'
+alias svnlog            'svn log | grep line'
+alias svnupex           'svn up --set-depth exclude'
+alias svnset            'svn propset svn:keywords "HeadURL Date Author Revision Id"'
+
+#===  grep  ===#
+alias gslack            'grep slack *.rpt > slack.log'
+alias grepslack         "grep slack *.rpt | sed -e 's/\s\+/  /g' > slack.log"
+alias grepvio           "grep VIO *.rpt | sed -e 's/\s\+/  /g' > vio.log"
+alias grepnopath        "grep 'No Paths' *.rpt > nopath.log"
+alias grepuncon         "grep 'Path is unconstrained' *.rpt > uncon.log"
+alias egrepio           'egrep "Startpoint|Endpoint|input external delay|output external delay|slack" *.rpt > io.log'
+
+
+#===  VNC  ===#
+alias getvnc    'vncserver :33 -depth 24 -geometry 1420x830  -deferupdate 100 -alwaysshared'
+alias getvnc_l  'vncserver :33 -depth 24 -geometry 1800x980  -deferupdate 100 -alwaysshared'
+alias getvnc_d  'vncserver :22 -depth 24 -geometry 3600x980  -deferupdate 100 -alwaysshared'
+alias getvnc_t  'vncserver :90 -depth 24 -geometry 1800x980  -deferupdate 100 -alwaysshared'
+
+#===  emacs  ===#
+#alias ev 'emacs-21.3 -batch -l ~/myenv/elisp/verilog-mode.el \!:1 -f verilog-batch-auto'
+alias ev 'emacs -batch -l ~/myenv/elisp/verilog-mode.el \!:1 -f verilog-batch-auto'
+
+#===  vtags  ===#
+alias vtags.pl  '~/mybin/vtags.pl'
+#alias meld.pl   '/home/yp_home/ycluo/mybin/meld.pl'
+
+
+#===  Richard Only  ===#
+alias lic_nc     '/home/project/phison/library/bin/chk_feature Incisive_Enterprise_Simulator'
+alias lic_verdi  '/home/project/phison/library/bin/chk_feature Verdi'
+
+#=== Xplorer ===#
+alias xplorer '/home/tools/Xtensa/Xplorer-4.0.5/xplorer'
+
+#=== ds5 ===#
+setenv  ARMLMD_LICENSE_FILE '27001@192.168.2.54'
+alias   ds5  '/home/tools/ARM/DS-5_v5.22.0/bin/eclipse'
+
+#=== help ===#
+alias nchelp   'more ~/myhelp/nc.help.810'
+alias irunhelp 'more ~/myhelp/irun.help'
+alias svnhelp  'more ~/myhelp/svn.help'
+alias sedhelp  'more ~/myhelp/sed.help'
+
+
+
+
+
+
