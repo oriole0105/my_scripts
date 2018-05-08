@@ -29,7 +29,7 @@ It can help me to rebuild my working environment quickly.
   * snippet.vim
   * verilog_systemverilog.vim
 * auto header
-  * source /home/library/phs_lib/phison_eda/user/phison_header.vim
+  * source auto_header.vim
 
 ## ctag
 * .ctag
@@ -37,7 +37,7 @@ It can help me to rebuild my working environment quickly.
 
 ## crontab
 
-## Phison EDA Tool Menu
+## EDA Tool Menu
 *must use tool*
 * lsf
 * irun
